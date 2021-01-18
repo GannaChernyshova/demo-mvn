@@ -55,7 +55,7 @@ public class MortgageFormStep2Page extends BasePage {
     }
 
     public MortgageFormStep2Page verifyPageDescription(String description) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleContains("mortgage-step-2"));
         By descriptionLocator = By.cssSelector("div.t-descr_md");
         String descriptionText = wait.
@@ -68,7 +68,7 @@ public class MortgageFormStep2Page extends BasePage {
 
     public void verifyApplicationSuccessMessage(String message) {
         By successboxLocator = By.cssSelector(" .js-successbox.t-form__successbox.t-text.t-text_md");
-        WebDriverWait waitForOne = new WebDriverWait(driver, 10);
+        WebDriverWait waitForOne = new WebDriverWait(driver, 5);
         String successMessageText = waitForOne.
                 until(ExpectedConditions.visibilityOfElementLocated(successboxLocator)).
                 getText();

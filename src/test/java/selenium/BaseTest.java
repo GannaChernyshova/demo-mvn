@@ -1,5 +1,6 @@
 package selenium;
 
+import com.epam.healenium.SelfHealingDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,15 +13,19 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-    protected WebDriver driver;
+    protected SelfHealingDriver driver;
 
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 //        options.setHeadless(true);
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        //declare delegate
+        WebDriver delegate = new ChromeDriver(options);
+//create Self-healing driver
+        driver = SelfHealingDriver.create(delegate);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1200, 800));
     }
 

@@ -40,7 +40,7 @@ public class MortgageFormStep1Page extends BasePage {
     public MortgageFormStep1Page verifyPageTitle(String title) {
         By titleLocator = By.cssSelector("div.t-title_xs");
         WebDriverWait wait = new
-                WebDriverWait(driver, 10);
+                WebDriverWait(driver, 5);
         WebElement titleElem = wait.until(ExpectedConditions.visibilityOfElementLocated(titleLocator));
         String titleText = titleElem.getText();
         assertThat(titleText, equalToIgnoringCase(title));

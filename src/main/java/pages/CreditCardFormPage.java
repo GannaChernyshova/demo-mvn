@@ -40,7 +40,7 @@ public class CreditCardFormPage extends BasePage{
     public CreditCardFormPage verifyPageTitle(String title) {
         By titleLocator = By.cssSelector("div.t-title_xs");
         WebDriverWait wait = new
-                WebDriverWait(driver, 10);
+                WebDriverWait(driver, 5);
         WebElement titleElem = wait.until(ExpectedConditions.visibilityOfElementLocated(titleLocator));
         String titleText = titleElem.getText();
         assertThat(titleText, equalToIgnoringCase(title));
@@ -50,7 +50,7 @@ public class CreditCardFormPage extends BasePage{
     public CreditCardFormPage verifyPageDescription(String description) {
         By descriptionLocator = By.cssSelector("div.t-descr_md");
         WebDriverWait wait = new
-                WebDriverWait(driver, 10);
+                WebDriverWait(driver, 5);
         WebElement descriptionElem = wait.until(ExpectedConditions.visibilityOfElementLocated(descriptionLocator));
         String descriptionText = descriptionElem.getText();
         assertThat(descriptionText, equalToIgnoringCase(description));
