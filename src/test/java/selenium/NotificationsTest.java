@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class NotificationsTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(NotificationsTest.class);
@@ -46,25 +45,5 @@ public class NotificationsTest extends BaseTest {
                 .inputEmail("mail@mail.com")
                 .clickApply()
                 .verifyApplicationSuccessMessage("Thank you! Your data has been submitted. Manager will contact you after verification.");
-    }
-
-    @Test
-    public void checkPremiumCardInfo() {
-        LOGGER.info("checkPremiumCardInfo test start");
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open()
-                .selectPremiumCardItem()
-                .verifyTitleText("Premium Card")
-                .verifyDescriptionContainsText("Get up to 3% cashback or up to 5% miles on every purchase");
-    }
-
-    @Test
-    public void checkIndividualSalaryCardInfo() {
-        LOGGER.info("checkIndividualSalaryCardInfo test start");
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open()
-                .selectIndividualSalaryCardItem()
-                .verifyTitleText("Individual salary card")
-                .verifyDescriptionContainsText("Up to 2% cashback, up to 5% on the balance and 0 coins for service");
     }
 }

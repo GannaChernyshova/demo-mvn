@@ -16,13 +16,10 @@ public class MortgageFormStep2Page extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//select[@name='Selectbox']")
-    private Select propertySelectBox;
-
-    @FindBy(xpath = "(//input[@type='text'])[1]")
+    @FindBy(xpath = "//input[@name='price']")
     private WebElement propertyPrice;
 
-    @FindBy(xpath = "(//input[@type='text'])[2]")
+    @FindBy(xpath = "//input[@name='payment']")
     private WebElement propertyDownPayment;
 
     @FindBy(xpath = "//input[@placeholder='E-mail']")
@@ -36,12 +33,13 @@ public class MortgageFormStep2Page extends BasePage {
 
 
     public MortgageFormStep2Page inputPropertyType(String value) {
+        Select propertySelectBox = new Select(driver.findElement(By.xpath("//select[@name='Selectbox']")));
         propertySelectBox.selectByValue(value);
         return this;
     }
 
     public MortgageFormStep2Page inputPropertyPrice(String price) {
-        propertyDownPayment.sendKeys(price);
+        propertyPrice.sendKeys(price);
         return this;
     }
 
