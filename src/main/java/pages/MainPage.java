@@ -30,8 +30,4 @@ public class MainPage extends BasePage {
         return new CreditCardFormPage(driver);
     }
 
-    public MortgageFormStep1Page clickOnApplyForMortgageButton() {
-        applyForMortgageButton.click();
-        return new MortgageFormStep1Page(driver);
-    }
 }

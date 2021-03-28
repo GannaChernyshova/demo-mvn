@@ -79,8 +79,19 @@ public class CreditCardFormPage extends BasePage{
         return this;
     }
 
-    public MortgageFormStep2Page clickApply() {
+    public CreditCardFormPage verifyErrorMessage(String message) {
+        By descriptionLocator = By.cssSelector("div.t-input-error");
+        WebDriverWait wait = new
+                WebDriverWait(driver, 5);
+        WebElement descriptionElem = wait.until(ExpectedConditions.visibilityOfElementLocated(descriptionLocator));
+        String descriptionText = descriptionElem.getText();
+        assertThat(descriptionText, equalToIgnoringCase(message));
+        return this;
+    }
+
+
+    public CreditCardFormPage clickApply() {
         applyButton.click();
-        return new MortgageFormStep2Page(driver);
+        return this;
     }
 }

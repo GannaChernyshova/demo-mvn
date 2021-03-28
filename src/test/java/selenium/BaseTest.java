@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,12 +20,12 @@ public class BaseTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.setHeadless(true);
-
         //declare delegate
         WebDriver delegate = new ChromeDriver(options);
-//create Self-healing driver
+        //create Self-healing driver
         driver = SelfHealingDriver.create(delegate);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1200, 800));
     }
