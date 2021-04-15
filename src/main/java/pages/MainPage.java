@@ -11,10 +11,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(), 'Get a credit card')]")
     private WebElement getCreditCardButton;
 
-    @FindBy(xpath = "//*[text()='Apply']")
-    private WebElement applyForMortgageButton;
-
-
     public MainPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -24,6 +20,7 @@ public class MainPage extends BasePage {
         driver.get(mainPageUrl);
         return this;
     }
+
 
     public CreditCardFormPage clickOnGetCreditCardButton() {
         getCreditCardButton.click();

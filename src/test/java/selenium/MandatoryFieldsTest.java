@@ -1,17 +1,12 @@
 package selenium;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
 
-
-public class NotificationsTest extends BaseTest {
-    private static final Logger LOGGER = LogManager.getLogger(NotificationsTest.class);
+public class MandatoryFieldsTest extends BaseTest {
 
     @Test
-    public void applyForCreditCardWithNameError() {
-        LOGGER.info("applyForCreditCardWithNameError test start");
+    public void verifyThatNameIsMandatoryFieldForApplication() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open()
                 .clickOnGetCreditCardButton()

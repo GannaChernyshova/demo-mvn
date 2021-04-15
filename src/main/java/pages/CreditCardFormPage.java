@@ -15,9 +15,6 @@ public class CreditCardFormPage extends BasePage{
         super(driver);
     }
 
-    @FindBy(xpath = "//input[@placeholder='Name']")
-    private WebElement nameInput;
-
     @FindBy(xpath = "//input[@placeholder='Surname']")
     private WebElement surnameInput;
 
@@ -54,12 +51,6 @@ public class CreditCardFormPage extends BasePage{
         WebElement descriptionElem = wait.until(ExpectedConditions.visibilityOfElementLocated(descriptionLocator));
         String descriptionText = descriptionElem.getText();
         assertThat(descriptionText, equalToIgnoringCase(description));
-        return this;
-    }
-
-
-    public CreditCardFormPage inputName(String name) {
-        nameInput.sendKeys(name);
         return this;
     }
 
