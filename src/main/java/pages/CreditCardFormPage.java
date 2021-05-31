@@ -1,7 +1,8 @@
 package pages;
 
+import com.epam.healenium.SelfHealingDriver;
+import com.epam.reportportal.annotations.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 public class CreditCardFormPage extends BasePage{
-    public CreditCardFormPage(WebDriver driver) {
+    public CreditCardFormPage(SelfHealingDriver driver) {
         super(driver);
     }
 
@@ -33,7 +34,7 @@ public class CreditCardFormPage extends BasePage{
     @FindBy(css = "div.t-descr_md")
     private WebElement formDescription;
 
-
+    @Step("Page title is '{title}'")
     public CreditCardFormPage verifyPageTitle(String title) {
         By titleLocator = By.cssSelector("div.t-title_xs");
         WebDriverWait wait = new
@@ -44,6 +45,7 @@ public class CreditCardFormPage extends BasePage{
         return this;
     }
 
+    @Step("Page description is '{description}'")
     public CreditCardFormPage verifyPageDescription(String description) {
         By descriptionLocator = By.cssSelector("div.t-descr_md");
         WebDriverWait wait = new
@@ -54,22 +56,26 @@ public class CreditCardFormPage extends BasePage{
         return this;
     }
 
-    public CreditCardFormPage inputSurname(String surname) {
+    @Step("Input Surname '{surname}'")
+    public CreditCardFormPage inputSurnameValue(String surname) {
         surnameInput.sendKeys(surname);
         return this;
     }
 
 
+    @Step("Input Phone '{phone}'")
     public CreditCardFormPage inputPhone(String phone) {
         phoneInput.sendKeys(phone);
         return this;
     }
 
+    @Step("Input Email '{email}'")
     public CreditCardFormPage inputEmail(String email) {
         emailInput.sendKeys(email);
         return this;
     }
 
+    @Step("Verify Name error message is '{message}'")
     public CreditCardFormPage verifyErrorMessage(String message) {
         By descriptionLocator = By.cssSelector("div.t-input-error");
         WebDriverWait wait = new
